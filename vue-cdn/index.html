@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Hello world</title>
+    </head>
+    <body>
+        <p>Hello world from template</p>
+        
+        <div id="vueApp">
+            <h1>Hello world from Vue App</h1>
+            <h2>{{ name }}</h2>
+            <button @click="updateName">Update name</button>
+
+            <button @click="showGrades">Toggle visibility grades</button>
+
+            <ul v-if="isVisibleGrades">
+                <li v-for="item of gradesData">
+                    <p>{{ item.name}}: {{ item.grade }}</p>
+                </li>
+            </ul>
+            <hr>
+            <ul v-show="isVisibleGrades">
+                <li v-for="item of gradesData">
+                    <p>{{ item.name}}: {{ item.grade }}</p>
+                </li>
+            </ul>
+
+            <p><strong>Num of aproved students:</strong> {{ approvedCount }}</p>
+        </div>
+
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <script src="app.js"></script>
+    </body>
+</html>
