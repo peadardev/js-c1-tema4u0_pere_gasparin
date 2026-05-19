@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>agenda</title>
+    </head>
+    <body>
+        <p>Agenda</p>
+        
+        <div id="appAgenda">
+            <h1>CONTACTES</h1>
+
+            <form action="" method="get">
+                <input type="text" v-model="nameContact" placeholder="(nom del contacte)" required />
+                <button @click.prevent="addContact">Afegir</button>
+            </form>
+
+            <p v-show="emptyName" style="color:red">
+                El nom del contacte és obligatori
+            </p>
+
+            <div v-show="!existContacts">
+                <p>No hi ha contactes a la llista</p>
+            </div>
+
+            <ul v-if="existContacts">
+                <li v-for="contact of contacts">
+                    <p>{{ contact }}</p>
+                </li>
+            </ul>
+
+            <div v-show="existContacts">
+                <p>Total de registres: {{ num_registers }}</p>
+            </div>
+
+        </div>
+
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <script src="app.js"></script>
+    </body>
+</html>
