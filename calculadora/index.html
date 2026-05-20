@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>calculadora arees</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <div id="calcHeader" class="calc-header">
+            <h2>Calculadora</h2>
+            <p>Calcula àrees de figures geomètriques</p>
+        </div>
+ 
+        <div id="appCalculator" class="app-calculator">
+
+            <div id="figureChooser" class="figure-chooser">
+                <p class="text-section">Selecciona una figura:</p>
+                <div class="buttons">
+                    <label v-for="figure of figures" :key="figure"
+                        class="radio-button" :class="{ active: currentFigure.name === figure.name }">
+                        <input type="radio" :value="figure" v-model="currentFigure"/>{{ figure.name }}
+                    </label>
+                </div>
+            </div>
+
+            <div id="figureSizes" class="figure-sizes">
+                <p class="text-section">Introdueix les mides:</p>
+                <span class="dimension-fields">
+                    <div v-for="[key, dim] of Object.entries(currentFigure.dimensions)">
+                        <label class="field-label">{{ currentFigure.dimensions[key].name }} ({{ key }}): </label>
+                        <input class="field-input" type="number" v-model="currentFigure.dimensions[key].value" min="0"/>
+                    </div>
+                </span>
+            </div>
+
+            <div id="figureResult" class="figure-result">
+                <p class="resultat-text">Area {{ currentFigure.name.toUpperCase() }} = {{ currentFigure.formula }}</p>
+                <div class="resultat-valor">{{ computedArea }}</div>
+                <p class="resultat-text">unitats quadrades</p>
+            </div>
+
+        </div>
+
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <script type="module" src="app.js"></script>
+        
+    </body>
+</html>
