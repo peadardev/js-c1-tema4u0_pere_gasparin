@@ -4,33 +4,44 @@
         <meta charset="UTF-8" />
         <title>pelis</title>
     </head>
-    <body style="max-width: 400px; min-width: 200px;margin: 20px;">
-        <h1 
-            style="border: 1px solid black;padding: 10px;text-align: center;background-color: lightsalmon;"
-            >Llistat de pel·lícules
-        </h1>
+    <body">
+        <h2 class="head-text">Llistat de pel·lícules</h2>
 
         <div id="appPelis">
             <div style="text-align: center;">
-                <button @click="toggleView" 
-                    style="padding: 10px 20px;background: lightsteelblue;border-radius: 8px;cursor: pointer;border: 1px solid gray;"
-                    >{{ textButton }}
-                </button>
+                <button @click="toggleView" class="button-toggle">{{ textButton }}</button>
             </div>
             <br>
 
             <div v-for="movie in movies">
-                <div v-if="isShowAll || movie.inTheaters" 
-                        style="border: 1px solid black;padding: 5px;text-align: center;background-color: lightyellow;">
+                <div v-if="isShowAll || movie.inTheaters" class="movie-block">
                     <h3>{{movie.name }} ({{ movie.year }})</h3>
-                    <img v-bind:src="movie.image" style="max-width:80px; width:100%; height:auto;" />
+                    <img v-bind:src="movie.image"/>
                     <p>{{ movie.description }}</p>
                     <p><strong>Valoració: </strong>{{ movie.rating }}/5</p>
                 </div>
             </div>
         </div>
-
-        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-        <script src="app.js"></script>
     </body>
+
+    <style>
+        body {
+            max-width: 400px; min-width: 200px;margin: 20px;background: black;
+        }
+        img {
+            max-width:80px; width:100%; height:auto;
+        }
+        .head-text {
+            border: 1px solid black;padding: 10px;text-align: center;background-color: yellowgreen;
+        }
+        .button-toggle {
+            padding: 10px 20px;background: lightsteelblue;border-radius: 8px;cursor: pointer;border: 1px solid gray;
+        }
+        .movie-block {
+            border: 0px solid black;padding: 5px; margin: 5px; text-align: center;background-color: lightyellow;
+        }
+    </style>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="app.js"></script>
 </html>
