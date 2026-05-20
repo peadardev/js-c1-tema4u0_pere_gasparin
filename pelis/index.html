@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>pelis</title>
+    </head>
+    <body>
+        <h1>Llistat de pel·lícules</h1>
+        <div id="appPelis">
+            <div v-show="isShowAll">
+                <button @click="showInTheaters">Als cinemes</button>
+            </div>
+            <div v-show="!isShowAll">
+                <button @click="showAll">Mostrar totes</button>
+            </div>
+        </div>
+
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <script src="app.js"></script>
+    </body>
+</html>
