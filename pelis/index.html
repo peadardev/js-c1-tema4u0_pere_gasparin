@@ -4,14 +4,29 @@
         <meta charset="UTF-8" />
         <title>pelis</title>
     </head>
-    <body>
-        <h1>Llistat de pel·lícules</h1>
+    <body style="max-width: 400px; min-width: 200px;margin: 20px;">
+        <h1 
+            style="border: 1px solid black;padding: 10px;text-align: center;background-color: lightsalmon;"
+            >Llistat de pel·lícules
+        </h1>
+
         <div id="appPelis">
-            <div v-show="isShowAll">
-                <button @click="showInTheaters">Als cinemes</button>
+            <div style="text-align: center;">
+                <button @click="toggleView" 
+                    style="padding: 10px 20px;background: lightsteelblue;border-radius: 8px;cursor: pointer;border: 1px solid gray;"
+                    >{{ textButton }}
+                </button>
             </div>
-            <div v-show="!isShowAll">
-                <button @click="showAll">Mostrar totes</button>
+            <br>
+
+            <div v-for="movie in movies">
+                <div v-if="isShowAll || movie.inTheaters" 
+                        style="border: 1px solid black;padding: 5px;text-align: center;background-color: lightyellow;">
+                    <h3>{{movie.name }} ({{ movie.year }})</h3>
+                    <img v-bind:src="movie.image" style="max-width:80px; width:100%; height:auto;" />
+                    <p>{{ movie.description }}</p>
+                    <p><strong>Valoració: </strong>{{ movie.rating }}/5</p>
+                </div>
             </div>
         </div>
 

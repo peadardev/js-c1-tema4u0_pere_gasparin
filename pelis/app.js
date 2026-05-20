@@ -3,27 +3,18 @@ const { createApp, ref, computed} = Vue;
 const app = createApp({
     setup() {
         const isShowAll = ref(true);
+        const textButton = computed(() => isShowAll.value ? "Als cinemes" : "Mostra totes")
+        const toggleView =  () => isShowAll.value = !isShowAll.value;
 
-        function showInTheaters() {
-            isShowAll.value = !isShowAll.value;
-            console.log("PELIS: " + JSON.stringify(movies[1].name));
-        }
-
-        function showAll() {
-            isShowAll.value = !isShowAll.value;
-            console.log("PELIS: " + JSON.stringify(movies[0].name));
-        }
-
-        
         return {
+            movies,
             isShowAll,
-            showInTheaters,
-            showAll,
+            textButton,
+            toggleView,
         };
     },
 });
 
-app.mount("#appPelis");
 
 const movies = [
 {
@@ -127,3 +118,6 @@ const movies = [
 "year": 2000
 }
 ]
+
+
+app.mount("#appPelis");
