@@ -29,7 +29,7 @@ class Figure {
         throw new Error("ERROR: s'ha d'implementar a les subclasses");
     }
 
-    getNumericCalc() {
+    getFormulaNum() {
         throw new Error("ERROR: s'ha d'implementar a les subclasses");
     }
 }
@@ -46,8 +46,8 @@ class Square extends Figure {
         return this.dimensions.s.value**2;
     }
 
-    getNumericCalc() {
-        return `${this.dimensions.s.value} x ${this.dimensions.s.value}`;
+    getFormulaNum() {
+        return this.formula.replaceAll("s", this.dimensions.s.value)
     }
 }
 
@@ -63,8 +63,10 @@ class Rectangle extends Figure {
         return this.dimensions.b.value * this.dimensions.h.value;
     }
 
-    getNumericCalc() {
-        return `${this.dimensions.b.value} x ${this.dimensions.h.value}`;
+    getFormulaNum() {
+        return this.formula
+            .replaceAll("b", this.dimensions.b.value)
+            .replaceAll("h", this.dimensions.h.value)
     }
 }
 
@@ -80,8 +82,8 @@ class Circle extends Figure {
         return this.dimensions.r.value**2 * Math.PI;
     }
 
-    getNumericCalc() {
-        return `pi x ${this.dimensions.r.value}^2`;
+    getFormulaNum() {
+        return this.formula.replaceAll("r", this.dimensions.r.value)
     }
 }
 
@@ -97,7 +99,9 @@ class Triangle extends Figure {
         return this.dimensions.b.value * this.dimensions.h.value / 2;
     }
 
-    getNumericCalc() {
-        return `(${this.dimensions.b.value} x ${this.dimensions.h.value}) / 2`;
+    getFormulaNum() {
+        return this.formula
+            .replaceAll("b", this.dimensions.b.value)
+            .replaceAll("h", this.dimensions.h.value)
     }
 }

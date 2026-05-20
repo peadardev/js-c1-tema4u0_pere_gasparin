@@ -16,7 +16,7 @@
             <div id="figureChooser" class="figure-chooser">
                 <p class="text-section">Selecciona una figura:</p>
                 <div class="buttons">
-                    <label v-for="figure of figures" :key="figure"
+                    <label v-for="figure of figures" :key="figure.name"
                         class="radio-button" :class="{ active: currentFigure.name === figure.name }">
                         <input type="radio" :value="figure" v-model="currentFigure"/>{{ figure.name }}
                     </label>
@@ -27,17 +27,17 @@
                 <p class="text-section">Introdueix les mides:</p>
                 <span class="dimension-fields">
                     <div v-for="[key, dim] of Object.entries(currentFigure.dimensions)">
-                        <label class="field-label">{{ currentFigure.dimensions[key].name }} ({{ key }}): </label>
-                        <input class="field-input" type="number" v-model="currentFigure.dimensions[key].value" min="0"/>
+                        <label class="field-label">{{ dim.name }} ({{ key }}): </label>
+                        <input class="field-input" type="number" v-model="dim.value" min="0"/>
                     </div>
                 </span>
             </div>
 
             <div id="figureResult" class="figure-result">
                 <p class="resultat-text">
-                    Area <strong>{{ currentFigure.name.toLowerCase() }} = {{ currentFigure.formula }}</strong> = {{ currentFigure.getNumericCalc() }}
+                    Àrea <strong>{{ currentFigure.name }} = {{ currentFigure.formula }}</strong> = {{ currentFigure.getFormulaNum() }}
                 </p>
-                <div class="resultat-valor">{{ computedArea }}</div>
+                <div class="resultat-valor">{{ currentFigure.computeArea().toFixed(2) }}</div>
                 <p class="resultat-text">unitats quadrades</p>
             </div>
 
