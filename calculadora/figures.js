@@ -28,6 +28,10 @@ class Figure {
     computeArea() {
         throw new Error("ERROR: s'ha d'implementar a les subclasses");
     }
+
+    getNumericCalc() {
+        throw new Error("ERROR: s'ha d'implementar a les subclasses");
+    }
 }
 
 class Square extends Figure {
@@ -40,6 +44,10 @@ class Square extends Figure {
 
     computeArea() {
         return this.dimensions.s.value**2;
+    }
+
+    getNumericCalc() {
+        return `${this.dimensions.s.value} x ${this.dimensions.s.value}`;
     }
 }
 
@@ -54,6 +62,10 @@ class Rectangle extends Figure {
     computeArea() {
         return this.dimensions.b.value * this.dimensions.h.value;
     }
+
+    getNumericCalc() {
+        return `${this.dimensions.b.value} x ${this.dimensions.h.value}`;
+    }
 }
 
 class Circle extends Figure {
@@ -67,17 +79,25 @@ class Circle extends Figure {
     computeArea() {
         return this.dimensions.r.value**2 * Math.PI;
     }
+
+    getNumericCalc() {
+        return `pi x ${this.dimensions.r.value}^2`;
+    }
 }
 
 class Triangle extends Figure {
     constructor() {
         super();
         this._name = "Triangle";
-        this._formula = "b x h / 2";
+        this._formula = "(b x h) / 2";
         this.dimensions = {b: {name: "Base", value: 0}, h: {name: "Alçada", value: 0}};
     }
 
     computeArea() {
         return this.dimensions.b.value * this.dimensions.h.value / 2;
+    }
+
+    getNumericCalc() {
+        return `(${this.dimensions.b.value} x ${this.dimensions.h.value}) / 2`;
     }
 }

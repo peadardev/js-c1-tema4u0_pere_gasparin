@@ -34,7 +34,9 @@
             </div>
 
             <div id="figureResult" class="figure-result">
-                <p class="resultat-text">Area {{ currentFigure.name.toUpperCase() }} = {{ currentFigure.formula }}</p>
+                <p class="resultat-text">
+                    Area <strong>{{ currentFigure.name.toLowerCase() }} = {{ currentFigure.formula }}</strong> = {{ currentFigure.getNumericCalc() }}
+                </p>
                 <div class="resultat-valor">{{ computedArea }}</div>
                 <p class="resultat-text">unitats quadrades</p>
             </div>
